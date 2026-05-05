@@ -1,9 +1,39 @@
 [gd_scene format=3 uid="uid://8lidg4hqe43w"]
 
-[ext_resource type="Texture2D" uid="uid://dd860n3iw55m1" path="res://icon.svg" id="1_rupst"]
+[ext_resource type="PackedScene" uid="uid://cfa3xni5hj64u" path="res://player/player.tscn" id="1_rupst"]
 
-[node name="Node2D" type="Node2D" unique_id=1068542822]
+[sub_resource type="Gradient" id="Gradient_edjgo"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=1219825441]
-position = Vector2(234, 126)
-texture = ExtResource("1_rupst")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rupst"]
+gradient = SubResource("Gradient_edjgo")
+width = 32
+height = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edjgo"]
+size = Vector2(32, 32)
+
+[node name="playground" type="Node2D" unique_id=1068542822]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=408586972]
+position = Vector2(240, 260)
+scale = Vector2(16, 1)
+texture = SubResource("GradientTexture2D_rupst")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D" unique_id=1506391437]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" unique_id=448831328]
+shape = SubResource("RectangleShape2D_edjgo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1742255153]
+position = Vector2(-0.99998474, 125)
+scale = Vector2(0.9375, 8.25)
+texture = SubResource("GradientTexture2D_rupst")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D2" unique_id=1557829859]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/StaticBody2D" unique_id=111497430]
+shape = SubResource("RectangleShape2D_edjgo")
+
+[node name="Player" parent="." unique_id=1029986768 instance=ExtResource("1_rupst")]
+position = Vector2(193, 210)
